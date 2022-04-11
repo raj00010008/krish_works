@@ -73,6 +73,8 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
+
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55.0),
@@ -132,8 +134,8 @@ class _MyHomePageState extends State<MyHomePage>
                                             shape: PinCodeFieldShape.box,
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            fieldHeight: 75,
-                                            fieldWidth: 55,
+                                            fieldHeight: h*0.10,
+                                            fieldWidth: w*0.040,
                                             activeFillColor: Colors.white,
                                           ),
                                           keyboardType: TextInputType.number,
@@ -183,7 +185,10 @@ class _MyHomePageState extends State<MyHomePage>
                       onPressed: () {
                         // _controller.forward();
                         if (_selectedHome == false) {
-                          _webViewController.loadUrl(AppConstant.Home_URL);
+                          _webViewController.loadUrl(AppConstant.Home_URL,
+
+
+                          );
                         }
                         setState(() {
                           _selectedHome = true;
@@ -275,6 +280,10 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         body:
         WebView(
+
+
+
+
           javascriptMode: JavascriptMode.unrestricted,
           initialUrl: AppConstant.Home_URL,
           onWebViewCreated: (controller) {
